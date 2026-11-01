@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f6f6fb;
+  --surface: #ffffff;
+  --surface-2: #f0eff9;
+  --ink: #1b1a33;
+  --muted: #55546f;
+  --line: #e0def0;
+  --primary: #4338ca;
+  --primary-hover: #3730a3;
+  --primary-ink: #ffffff;
+  --violet: #7c3aed;
+  --violet-soft: #ede9fe;
+  --ok: #047857;
+  --ok-soft: #d1fae5;
+  --bad: #c2353b;
+  --bad-soft: #fde4e4;
+  --warn: #92400e;
+  --warn-soft: #fef3c7;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0f0e1d;
+  --surface: #17162b;
+  --surface-2: #211f3a;
+  --ink: #ecebfa;
+  --muted: #a9a7c7;
+  --line: #2f2d4d;
+  --primary: #818cf8;
+  --primary-hover: #a5b4fc;
+  --primary-ink: #11102a;
+  --violet: #a78bfa;
+  --violet-soft: #2a2350;
+  --ok: #34d399;
+  --ok-soft: #0c3b2e;
+  --bad: #ff8a8f;
+  --bad-soft: #4a1d24;
+  --warn: #fbbf24;
+  --warn-soft: #3d2e0a;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-ink: var(--primary-ink);
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-jakarta), var(--font-inter), ui-sans-serif, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Print (PDF via window.print) ---------- */
+@page {
+  size: A4 landscape;
+  margin: 10mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-page {
+    break-after: page;
+  }
+  .print-page:last-child {
+    break-after: auto;
+  }
+  .print-bw * {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #000 !important;
+  }
+}
